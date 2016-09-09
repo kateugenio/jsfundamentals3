@@ -12,50 +12,42 @@
 // crawl - have it alert for example “Jay is crawling” and increase distance_travelled by 1
 
 function personConstructor(name){
-	var myObj = [
-		{
-			name: name,
-			distance_travelled: 0,
+	var myObj = {
+		name: name,
+		distance_travelled: 0,
+		say_name: function(){
+			alert(myObj[0].name);
 		},
-		{
-			say_name: function(){
-				alert(myObj[0].name);
-			},
-			say_something: function(param){
-				alert(myObj[0].name + " says " + param);
-			},
-			walk: function(){
-				alert(myObj[0].name + " is walking");
-				myObj[0].distance_travelled += 3;
-				return myObj[0].distance_travelled;
-			},
-			run: function(){
-				alert(myObj[0].name + " is running");
-				myObj[0].distance_travelled += 10;
-				return myObj[0].distance_travelled;
-			},
-			crawl: function(){
-				alert(myObj[0].name + " is crawling");
-				myObj[0].distance_travelled += 1;
-				return myObj[0].distance_travelled;
-			}
+		say_something: function(param){
+			alert(myObj[0].name + " says " + param);
+		},
+		walk: function(){
+			return myObj.move("walking", 3);
+		},
+		run: function(){
+			return myObj.move("running", 10);
+		},
+		crawl: function(){
+			return myObj.move("crawling", 1);
+		},
+		move: function(){
+		console.log(`${myObj.name} is ${movement}`);
+		myObj.distance_traveled += incrementDistance;
+		return myObj;
 		}
-	];
+	}
 	return myObj;
 }
 
+
 // Now create a ninjaConstructor that can be used to create Ninjas that each have a name, cohort, and belt-level. Give all of the Ninjas a “levelUp” method that increases their belt-level (Have all ninjas start at a yellow-belt).
 function ninjaConstructor(name, cohort){
-	var ninja = [
-		{
-			name: name,
-			cohort: cohort,
-			belt_level: 1,
-		},
-		{
-			levelUp: function(){
-				ninja[0].belt_level += 1;
-			}
-		},
-	];
+	var ninja = {
+		name: name,
+		cohort: cohort,
+		belt_level: 1,
+		levelUp: function(){
+			ninja[0].belt_level += 1;
+		}
+	}
 }
